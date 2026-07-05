@@ -12,6 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- smooth scroll -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,21 +30,23 @@
             <div class="logo">TravelMate</div>
 
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Destinations</a></li>
-                <li><a href="#">Packages</a></li>
-                <li><a href="#">Weather</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#weather">Weather</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
 
-            <button class="login-btn">Login</button>
+            <button class="login-btn" onclick="document.getElementById('login').scrollIntoView({behavior:'smooth'})">
+                Login
+            </button>
 
         </nav>
     </header>
 
 
-    <!-- HERO -->
-    <section class="hero">
+    <!-- HERO / HOME -->
+    <section class="hero" id="home">
 
         <div class="hero-content">
 
@@ -48,30 +57,36 @@
                 and plan your journey with TravelMate.
             </p>
 
-            <button class="explore-btn">Explore Now</button>
+            <button class="explore-btn"
+                onclick="document.getElementById('destinations').scrollIntoView({behavior:'smooth'})">
+                Explore Now
+            </button>
 
         </div>
 
     </section>
-<!-- WEATHER SECTION -->
-<section class="weather">
 
-    <h2 class="section-title">Check Weather</h2>
 
-    <div class="weather-box">
+    <!-- WEATHER -->
+    <section class="weather" id="weather">
 
-        <input type="text" id="weatherCity" placeholder="Enter city name">
+        <h2 class="section-title">Check Weather</h2>
 
-        <button onclick="getWeather()">Get Weather</button>
+        <div class="weather-box">
 
-        <div id="weatherResult"></div>
+            <input type="text" id="weatherCity" placeholder="Enter city name">
 
-    </div>
+            <button onclick="getWeather()">Get Weather</button>
 
-</section>
+            <div id="weatherResult"></div>
+
+        </div>
+
+    </section>
+
 
     <!-- DESTINATIONS -->
-    <section class="destinations">
+    <section class="destinations" id="destinations">
 
         <h2 class="section-title">Popular Destinations</h2>
 
@@ -129,77 +144,44 @@
 
 
     <!-- PACKAGES -->
-    <section class="packages">
+    <section class="packages" id="packages">
 
         <h2 class="section-title">Popular Travel Packages</h2>
 
         <div class="package-grid">
 
-            <!-- PACKAGE 1 -->
             <div class="package-card" onclick="selectPackage('Explorer', this)">
-                <img src="images/explorer.jpg" alt="Explorer Package">
+                <img src="images/explorer.jpg">
 
                 <div class="package-content">
-
                     <h3>Explorer Package</h3>
                     <p>3 Days / 2 Nights</p>
-
-                    <ul>
-                        <li>✔ Hotel Included</li>
-                        <li>✔ Sightseeing Included</li>
-                        <li>✔ Breakfast Included</li>
-                    </ul>
-
                     <h4>₹15,999</h4>
-
                     <button type="button">Buy Now</button>
-
                 </div>
             </div>
 
 
-            <!-- PACKAGE 2 -->
             <div class="package-card" onclick="selectPackage('Adventure', this)">
-                <img src="images/adventure.jpg" alt="Adventure Package">
+                <img src="images/adventure.jpg">
 
                 <div class="package-content">
-
                     <h3>Adventure Package</h3>
                     <p>5 Days / 4 Nights</p>
-
-                    <ul>
-                        <li>✔ Hotel Included</li>
-                        <li>✔ Adventure Activities</li>
-                        <li>✔ Guided Tour</li>
-                    </ul>
-
                     <h4>₹29,999</h4>
-
                     <button type="button">Buy Now</button>
-
                 </div>
             </div>
 
 
-            <!-- PACKAGE 3 -->
             <div class="package-card" onclick="selectPackage('Luxury', this)">
-                <img src="images/luxury.jpg" alt="Luxury Package">
+                <img src="images/luxury.jpg">
 
                 <div class="package-content">
-
                     <h3>Luxury Package</h3>
                     <p>7 Days / 6 Nights</p>
-
-                    <ul>
-                        <li>✔ Premium Resort</li>
-                        <li>✔ Airport Pickup</li>
-                        <li>✔ VIP Experience</li>
-                    </ul>
-
                     <h4>₹49,999</h4>
-
                     <button type="button">Buy Now</button>
-
                 </div>
             </div>
 
@@ -208,14 +190,13 @@
 
 
     <!-- BOOKING -->
-    <section class="booking">
+    <section class="booking" id="booking">
 
         <h2 class="section-title">Book Your Trip</h2>
 
         <form id="bookingForm" class="booking-form">
 
             <input type="text" id="name" placeholder="Full Name" required>
-
             <input type="email" id="email" placeholder="Email Address" required>
 
             <select id="country" required>
@@ -233,7 +214,6 @@
             </select>
 
             <input type="date" id="travelDate" required>
-
             <input type="number" id="travelers" placeholder="Number of Travelers" min="1" required>
 
             <select id="package" required>
@@ -253,7 +233,7 @@
 
 
     <!-- BOOKINGS -->
-    <section class="my-bookings">
+    <section class="my-bookings" id="contact">
 
         <div class="stats">
 
@@ -277,6 +257,16 @@
         <h2>My Bookings</h2>
 
         <div id="bookingsContainer"></div>
+
+    </section>
+
+
+    <!-- LOGIN (placeholder section for next step) -->
+    <section id="login">
+
+        <h2 class="section-title">Login</h2>
+
+        <p>Login system will be added next step.</p>
 
     </section>
 
