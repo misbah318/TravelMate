@@ -1,21 +1,103 @@
 const express = require("express");
-const app = express();
 const path = require("path");
+const fs = require("fs");
+
+const app = express();
 
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "public")));
 
-let bookings = [];
+const BOOKINGS_FILE = path.join(__dirname, "bookings.json");
 
-app.post("/api/book", (req, res) => {
-    bookings.push(req.body);
-    res.json({ success: true });
+// Home Page
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.post("/api/login", (req, res) => {
-    res.json({ success: true });
+// Get all bookings
+app.get("/api/bookings", (req, res) => {
+
+    try {
+
+        const data = fs.readFileSync(BOOKINGS_FILE, "utf8");
+
+        const bookings = JSON.parse(data);
+
+        res.json(bookings);
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: "Failed to load bookings"
+        });
+    }
 });
 
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
+// Save booking
+app.post("/api/bookings", (req, res) => {
+
+    try {
+
+        const newBooking = req.body;
+
+        const data = fs.readFileSync(BOOKINGS_FILE, "utf8");
+
+        const bookings = JSON.parse(data);
+
+        bookings.push(newBooking);
+
+        fs.writeFileSync(
+            BOOKINGS_FILE,
+            JSON.stringify(bookings, null, 2)
+        );
+
+        res.json({
+            success: true,
+            message: "Booking saved successfully"
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: "Failed to save booking"
+        });
+    }
+});
+
+// Delete booking
+app.delete("/api/bookings/:id", (req, res) => {
+
+    try {
+
+        const bookingId = Number(req.params.id);
+
+        const data = fs.readFileSync(BOOKINGS_FILE, "utf8");
+
+        let bookings = JSON.parse(data);
+
+        bookings = bookings.filter(
+            booking => booking.id !== bookingId
+        );
+
+        fs.writeFileSync(
+            BOOKINGS_FILE,
+            JSON.stringify(bookings, null, 2)
+        );
+
+        res.json({
+            success: true
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: "Failed to delete booking"
+        });
+    }
+});
+
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
 });
