@@ -53,40 +53,21 @@
     <!-- HERO / HOME -->
     <section class="hero" id="home">
 
-        <div class="hero-content">
+    <div class="hero-bg bg1"></div>
+    <div class="hero-bg bg2"></div>
+    <div class="hero-bg bg3"></div>
 
-            <h1>Explore the world with Travelmate</h1>
+    <div class="hero-content">
+        <h1>Explore the world with Travelmate</h1>
+        <p>
+            Explore beautiful destinations, check weather forecasts,
+            and plan your journey with TravelMate.
+        </p>
 
-            <p>
-                Explore beautiful destinations, check weather forecasts,
-                and plan your journey with TravelMate.
-            </p>
-
-            <button class="explore-btn"
-                onclick="document.getElementById('destinations').scrollIntoView({behavior:'smooth'})">
-                Explore Now
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- WEATHER -->
-    <section class="weather" id="weather">
-
-    <h2 class="section-title">Check Weather</h2>
-
-    <div class="weather-box">
-
-        <input type="text" id="weatherCity" placeholder="Enter city name">
-
-        <button onclick="getWeather()" class="weather-btn">
-            Get Weather
+        <button class="explore-btn"
+            onclick="document.getElementById('destinations').scrollIntoView({behavior:'smooth'})">
+            Explore Now
         </button>
-
-        <div id="weatherResult"></div>
-
     </div>
 
 </section>
@@ -265,6 +246,25 @@
         <div id="bookingsContainer"></div>
 
     </section>
+    <!-- WEATHER -->
+    <section class="weather" id="weather">
+
+    <h2 class="section-title">Check Weather</h2>
+
+    <div class="weather-box">
+
+        <input type="text" id="weatherCity" placeholder="Enter city name">
+
+        <button onclick="getWeather()" class="weather-btn">
+            Get Weather
+        </button>
+
+        <div id="weatherResult"></div>
+
+    </div>
+
+</section>
+
 
 <section id="contact" class="contact">
 

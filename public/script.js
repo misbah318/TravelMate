@@ -360,3 +360,21 @@ function handleAuth() {
 }
 
 window.addEventListener("DOMContentLoaded", updateNavbarUser);
+let heroIndex = 0;
+const heroSlides = document.querySelectorAll(".hero-bg");
+
+function showHeroSlide(index) {
+    heroSlides.forEach(slide => slide.classList.remove("active"));
+    heroSlides[index].classList.add("active");
+}
+
+function nextHeroSlide() {
+    heroIndex = (heroIndex + 1) % heroSlides.length;
+    showHeroSlide(heroIndex);
+}
+
+// start
+showHeroSlide(heroIndex);
+
+// change every 4 seconds (smooth)
+setInterval(nextHeroSlide, 7000);
