@@ -97,6 +97,7 @@ async function saveBooking(booking) {
 // =======================
 // BOOKING FORM HANDLER
 // =======================
+
 document.getElementById("bookingForm")?.addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -114,6 +115,15 @@ document.getElementById("bookingForm")?.addEventListener("submit", async functio
 
         return;
     }
+    const selectedDate = document.getElementById("travelDate").value;
+const today = new Date().toISOString().split("T")[0];
+
+if (selectedDate < today) {
+    document.getElementById("bookingMessage").innerText =
+        "Please select a valid future travel date.";
+    document.getElementById("bookingMessage").style.color = "red";
+    return;
+}
 
     const booking = {
         name: document.getElementById("name").value,
@@ -238,6 +248,13 @@ function updateStats(bookings) {
 window.addEventListener("DOMContentLoaded", () => {
     loadBookings();
     updateNavbarUser();
+
+    const dateInput = document.getElementById("travelDate");
+
+    if (dateInput) {
+        const today = new Date().toISOString().split("T")[0];
+        dateInput.min = today;
+    }
 });
 
 
@@ -376,5 +393,44 @@ function nextHeroSlide() {
 // start
 showHeroSlide(heroIndex);
 
-// change every 4 seconds (smooth)
+// change every 7 seconds (smooth)
 setInterval(nextHeroSlide, 7000);
+function openPackageDetails(event, packageName) {
+    event.stopPropagation();
+
+    localStorage.setItem("selectedPackage", packageName);
+
+    window.location.href = "package-details.html";
+}
+const slide1 = document.getElementById("slide1");
+const slide2 = document.getElementById("slide2");
+const slider = document.querySelector(".slider");
+
+const selectedPackage = localStorage.getItem("selectedPackage");
+
+if (slide1 && slide2 && selectedPackage) {
+
+    if (selectedPackage === "Explorer") {
+        slide1.src = "images/explorer-banner.jpg";
+        slide2.src = "images/explorer2-banner.jpg";
+    }
+    else if (selectedPackage === "Adventure") {
+        slide1.src = "images/adventure-banner.jpg";
+        slide2.src = "images/adventure2-banner.jpg";
+    }
+    else if (selectedPackage === "Luxury") {
+        slide1.src = "images/luxury-banner.jpg";
+        slide2.src = "images/luxury2-banner.jpg";
+    }
+}
+
+let position = 0;
+
+setInterval(() => {
+
+    position = position === 0 ? -50 : 0;
+
+    slider.style.transform =
+        `translateX(${position}%)`;
+
+}, 4000);
