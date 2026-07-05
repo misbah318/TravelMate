@@ -37,10 +37,15 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
-            <button class="login-btn" onclick="document.getElementById('login').scrollIntoView({behavior:'smooth'})">
-                Login
-            </button>
+      <div style="display:flex;align-items:center;gap:10px;">
 
+    <span id="userDisplay" style="color:white;font-weight:bold;"></span>
+
+    <button id="authBtn" class="login-btn" onclick="handleAuth()">
+        Login/sign up
+    </button>
+
+</div>
         </nav>
     </header>
 
@@ -233,8 +238,7 @@
 
 
     <!-- BOOKINGS -->
-    <section class="my-bookings" id="contact">
-
+    <section class="my-bookings" id="bookings">
         <div class="stats">
 
             <div class="stat-box">
@@ -281,15 +285,7 @@
     </div>
 
 </section>
-
-    <!-- LOGIN (placeholder section for next step) -->
-    <section id="login">
-
-        <h2 class="section-title">Login</h2>
-
-        <p>Login system will be added next step.</p>
-
-    </section>
+   
 
 
     <script src="script.js"></script>

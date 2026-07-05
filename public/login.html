@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelMate Login</title><style>
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, sans-serif;
+    }
+
+    body{
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:url("images/hero.jpg");
+        background-size:cover;
+        background-position:center;
+        position:relative;
+    }
+
+    body::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:rgba(0,0,0,0.45);
+    }
+
+    .login-container{
+        position:relative;
+        z-index:1;
+        width:90%;
+        max-width:450px;
+        background:white;
+        padding:35px;
+        border-radius:18px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .login-container h1{
+        text-align:center;
+        margin-bottom:25px;
+        color:#0ea5e9;
+    }
+
+    .login-container p.subtitle{
+        text-align:center;
+        color:#666;
+        margin-bottom:25px;
+    }
+
+    .login-container input{
+        width:100%;
+        padding:14px;
+        margin-bottom:15px;
+        border:1px solid #ddd;
+        border-radius:10px;
+        font-size:16px;
+    }
+
+    .login-container button{
+        width:100%;
+        padding:14px;
+        margin-bottom:12px;
+        border:none;
+        border-radius:10px;
+        background:#0ea5e9;
+        color:white;
+        font-size:16px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .login-container button:hover{
+        background:#0284c7;
+    }
+
+    #loginMessage{
+        text-align:center;
+        font-weight:bold;
+        margin-top:10px;
+    }
+
+    .back-home{
+        display:block;
+        text-align:center;
+        margin-top:20px;
+        text-decoration:none;
+        color:#0ea5e9;
+        font-weight:bold;
+    }
+
+    .back-home:hover{
+        text-decoration:underline;
+    }
+
+</style>
+
+</head><body><div class="login-container">
+
+    <h1>TravelMate</h1>
+
+    <p class="subtitle">Login or Create Your Account</p>
+
+    <input type="text" id="loginName" placeholder="Enter Full Name">
+
+    <input type="email" id="loginEmail" placeholder="Enter Email Address">
+
+    <button onclick="signup()">Sign Up</button>
+
+    <button onclick="login()">Login</button>
+
+    <p id="loginMessage"></p>
+
+    <a href="index.html" class="back-home">← Back to Home</a>
+
+</div>
+
+<script>
+
+    function signup(){
+
+        const name = document.getElementById("loginName").value.trim();
+        const email = document.getElementById("loginEmail").value.trim();
+
+        if(!name || !email){
+            document.getElementById("loginMessage").innerHTML =
+            "Please enter name and email.";
+            document.getElementById("loginMessage").style.color = "red";
+            return;
+        }
+
+        const user = {
+            name:name,
+            email:email
+        };
+
+        localStorage.setItem("travelmateUser", JSON.stringify(user));
+
+        document.getElementById("loginMessage").innerHTML =
+        "Account created successfully.";
+
+        document.getElementById("loginMessage").style.color = "green";
+    }
+
+    function login(){
+
+        const name = document.getElementById("loginName").value.trim();
+        const email = document.getElementById("loginEmail").value.trim();
+
+        const savedUser =
+        JSON.parse(localStorage.getItem("travelmateUser"));
+
+        if(!savedUser){
+            document.getElementById("loginMessage").innerHTML =
+            "Please Sign Up first.";
+
+            document.getElementById("loginMessage").style.color = "red";
+            return;
+        }
+
+        if(
+            savedUser.name === name &&
+            savedUser.email === email
+        ){
+
+            localStorage.setItem("isLoggedIn","true");
+
+            document.getElementById("loginMessage").innerHTML =
+            "Login successful. Redirecting...";
+
+            document.getElementById("loginMessage").style.color = "green";
+
+            setTimeout(()=>{
+                window.location.href="index.html";
+            },1000);
+
+        }else{
+
+            document.getElementById("loginMessage").innerHTML =
+            "Invalid name or email.";
+
+            document.getElementById("loginMessage").style.color = "red";
+        }
+    }
+
+</script>
+
+</body>
+</html>

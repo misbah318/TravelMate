@@ -84,6 +84,22 @@ function saveBooking(booking) {
 document.getElementById("bookingForm")?.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn !== "true") {
+
+        document.getElementById("bookingMessage").innerText =
+            "Please login before booking a trip.";
+
+        document.getElementById("bookingMessage").style.color = "red";
+
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1500);
+
+        return;
+    }
+
     const booking = {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
@@ -297,3 +313,50 @@ async function getWeather() {
         result.innerHTML = "❌ Network error";
     }
 }
+// =======================
+// LOGIN STATUS
+// =======================
+
+function updateNavbarUser() {
+
+    const authBtn = document.getElementById("authBtn");
+    const userDisplay = document.getElementById("userDisplay");
+
+    if (!authBtn || !userDisplay) return;
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const user = JSON.parse(localStorage.getItem("travelmateUser"));
+
+    if (isLoggedIn === "true" && user) {
+
+        userDisplay.innerText = `👋 ${user.name}`;
+
+        authBtn.innerText = "Logout";
+
+    } else {
+
+        userDisplay.innerText = "";
+
+        authBtn.innerText = "Login/sign up";
+    }
+}
+
+function handleAuth() {
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn === "true") {
+
+        localStorage.removeItem("isLoggedIn");
+
+        alert("Logged out successfully");
+
+        location.reload();
+
+    } else {
+
+        window.location.href = "login.html";
+    }
+}
+
+window.addEventListener("DOMContentLoaded", updateNavbarUser);

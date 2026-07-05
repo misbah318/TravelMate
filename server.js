@@ -1,18 +1,21 @@
 const express = require("express");
+const app = express();
 const path = require("path");
 
-const app = express();
-
 app.use(express.json());
+app.use(express.static(__dirname));
 
-app.use(express.static(path.join(__dirname, "public")));
+let bookings = [];
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
+app.post("/api/book", (req, res) => {
+    bookings.push(req.body);
+    res.json({ success: true });
 });
 
-const PORT = 3000;
+app.post("/api/login", (req, res) => {
+    res.json({ success: true });
+});
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+app.listen(3000, () => {
+    console.log("Server running on http://localhost:3000");
 });
