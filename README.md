@@ -5,8 +5,8 @@ TravelMate is a modern full-stack travel booking web application that allows use
 ---
 
 ## 🚀 Live Demo
+https://travelmate-0joz.onrender.com
 
-https://your-render-app-url.onrender.com
 
 ---
 
@@ -76,8 +76,6 @@ node server.js
 
 # open
 https://localhost:3000
-# Live Demo
-https://travelmate-0joz.onrender.com
 
 ----  
 
