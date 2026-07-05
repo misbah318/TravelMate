@@ -4,16 +4,13 @@
 <head>
     <meta charset="UTF-8">
 
-    <!-- WEBSITE TITLE -->
     <title>TravelMate - Your Journey Begins</title>
 
-    <!-- WEBSITE DESCRIPTION -->
     <meta name="description"
         content="TravelMate helps travelers explore destinations, check weather forecasts, and estimate trip budgets.">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS FILE -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,12 +20,8 @@
     <header>
         <nav class="navbar">
 
-            <!-- LOGO -->
-            <div class="logo">
-                TravelMate
-            </div>
+            <div class="logo">TravelMate</div>
 
-            <!-- NAVIGATION LINKS -->
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Destinations</a></li>
@@ -37,15 +30,13 @@
                 <li><a href="#">Contact</a></li>
             </ul>
 
-            <!-- LOGIN BUTTON -->
-            <button class="login-btn">
-                Login
-            </button>
+            <button class="login-btn">Login</button>
 
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
+
+    <!-- HERO -->
     <section class="hero">
 
         <div class="hero-content">
@@ -57,198 +48,240 @@
                 and plan your journey with TravelMate.
             </p>
 
-            <button class="explore-btn">
-                Explore Now
-            </button>
+            <button class="explore-btn">Explore Now</button>
 
         </div>
 
     </section>
-    <!-- DESTINATIONS SECTION -->
-<section class="destinations">
+<!-- WEATHER SECTION -->
+<section class="weather">
 
-    <h2 class="section-title">Popular Destinations</h2>
+    <h2 class="section-title">Check Weather</h2>
 
-    <div class="destination-grid">
+    <div class="weather-box">
 
-        <div class="destination-card" onclick="showCountry('india')">
-            <img src="images/india.jpg" alt="India">
-            <h3>India</h3>
-        </div>
+        <input type="text" id="weatherCity" placeholder="Enter city name">
 
-        <div class="destination-card" onclick="showCountry('japan')">
-            <img src="images/japan.jpg" alt="Japan">
-            <h3>Japan</h3>
-        </div>
+        <button onclick="getWeather()">Get Weather</button>
 
-        <div class="destination-card" onclick="showCountry('france')">
-            <img src="images/france.jpg" alt="France">
-            <h3>France</h3>
-        </div>
-
-        <div class="destination-card" onclick="showCountry('uae')">
-            <img src="images/uae.jpg" alt="UAE">
-            <h3>UAE</h3>
-        </div>
-
-        <div class="destination-card" onclick="showCountry('switzerland')">
-            <img src="images/switzerland.jpg" alt="Switzerland">
-            <h3>Switzerland</h3>
-        </div>
-
-        <div class="destination-card" onclick="showCountry('maldives')">
-            <img src="images/maldives.jpg" alt="Maldives">
-            <h3>Maldives</h3>
-        </div>
+        <div id="weatherResult"></div>
 
     </div>
 
 </section>
-<!-- COUNTRY MODAL -->
 
-<div id="countryModal" class="modal">
+    <!-- DESTINATIONS -->
+    <section class="destinations">
 
-    <div class="modal-content">
+        <h2 class="section-title">Popular Destinations</h2>
 
-        <span class="close-btn" onclick="closeModal()">
-            &times;
-        </span>
+        <div class="destination-grid">
 
-        <h2 id="countryTitle"></h2>
+            <div class="destination-card" onclick="showCountry('india')">
+                <img src="images/india.jpg" alt="India">
+                <h3>India</h3>
+            </div>
 
-        <ul id="cityList"></ul>
+            <div class="destination-card" onclick="showCountry('japan')">
+                <img src="images/japan.jpg" alt="Japan">
+                <h3>Japan</h3>
+            </div>
+
+            <div class="destination-card" onclick="showCountry('france')">
+                <img src="images/france.jpg" alt="France">
+                <h3>France</h3>
+            </div>
+
+            <div class="destination-card" onclick="showCountry('uae')">
+                <img src="images/uae.jpg" alt="UAE">
+                <h3>UAE</h3>
+            </div>
+
+            <div class="destination-card" onclick="showCountry('switzerland')">
+                <img src="images/switzerland.jpg" alt="Switzerland">
+                <h3>Switzerland</h3>
+            </div>
+
+            <div class="destination-card" onclick="showCountry('maldives')">
+                <img src="images/maldives.jpg" alt="Maldives">
+                <h3>Maldives</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MODAL -->
+    <div id="countryModal" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+
+            <h2 id="countryTitle"></h2>
+
+            <ul id="cityList"></ul>
+
+        </div>
 
     </div>
 
-</div>
-<!-- PACKAGES SECTION -->
 
-<section class="packages">
+    <!-- PACKAGES -->
+    <section class="packages">
 
-    <h2 class="section-title">Popular Travel Packages</h2>
+        <h2 class="section-title">Popular Travel Packages</h2>
 
-    <div class="package-grid">
+        <div class="package-grid">
 
-        <!-- PACKAGE 1 -->
-        <div class="package-card">
+            <!-- PACKAGE 1 -->
+            <div class="package-card" onclick="selectPackage('Explorer', this)">
+                <img src="images/explorer.jpg" alt="Explorer Package">
 
-            <img src="images/explorer.jpg" alt="Explorer Package">
+                <div class="package-content">
 
-            <div class="package-content">
+                    <h3>Explorer Package</h3>
+                    <p>3 Days / 2 Nights</p>
 
-                <h3>Explorer Package</h3>
+                    <ul>
+                        <li>✔ Hotel Included</li>
+                        <li>✔ Sightseeing Included</li>
+                        <li>✔ Breakfast Included</li>
+                    </ul>
 
-                <p>3 Days / 2 Nights</p>
+                    <h4>₹15,999</h4>
 
-                <ul>
-                    <li>✔ Hotel Included</li>
-                    <li>✔ Sightseeing Included</li>
-                    <li>✔ Breakfast Included</li>
-                </ul>
+                    <button type="button">Buy Now</button>
 
-                <h4>₹15,999</h4>
+                </div>
+            </div>
 
-                <button onclick="selectPackage('Explorer')">Buy Now</button>
 
+            <!-- PACKAGE 2 -->
+            <div class="package-card" onclick="selectPackage('Adventure', this)">
+                <img src="images/adventure.jpg" alt="Adventure Package">
+
+                <div class="package-content">
+
+                    <h3>Adventure Package</h3>
+                    <p>5 Days / 4 Nights</p>
+
+                    <ul>
+                        <li>✔ Hotel Included</li>
+                        <li>✔ Adventure Activities</li>
+                        <li>✔ Guided Tour</li>
+                    </ul>
+
+                    <h4>₹29,999</h4>
+
+                    <button type="button">Buy Now</button>
+
+                </div>
+            </div>
+
+
+            <!-- PACKAGE 3 -->
+            <div class="package-card" onclick="selectPackage('Luxury', this)">
+                <img src="images/luxury.jpg" alt="Luxury Package">
+
+                <div class="package-content">
+
+                    <h3>Luxury Package</h3>
+                    <p>7 Days / 6 Nights</p>
+
+                    <ul>
+                        <li>✔ Premium Resort</li>
+                        <li>✔ Airport Pickup</li>
+                        <li>✔ VIP Experience</li>
+                    </ul>
+
+                    <h4>₹49,999</h4>
+
+                    <button type="button">Buy Now</button>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- BOOKING -->
+    <section class="booking">
+
+        <h2 class="section-title">Book Your Trip</h2>
+
+        <form id="bookingForm" class="booking-form">
+
+            <input type="text" id="name" placeholder="Full Name" required>
+
+            <input type="email" id="email" placeholder="Email Address" required>
+
+            <select id="country" required>
+                <option value="">Select Country</option>
+                <option value="India">India</option>
+                <option value="Japan">Japan</option>
+                <option value="France">France</option>
+                <option value="UAE">UAE</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Maldives">Maldives</option>
+            </select>
+
+            <select id="city" required>
+                <option value="">Select City</option>
+            </select>
+
+            <input type="date" id="travelDate" required>
+
+            <input type="number" id="travelers" placeholder="Number of Travelers" min="1" required>
+
+            <select id="package" required>
+                <option value="">Select Package</option>
+                <option value="Explorer">Explorer Package</option>
+                <option value="Adventure">Adventure Package</option>
+                <option value="Luxury">Luxury Package</option>
+            </select>
+
+            <button type="submit">Submit Booking</button>
+
+        </form>
+
+        <div id="bookingMessage"></div>
+
+    </section>
+
+
+    <!-- BOOKINGS -->
+    <section class="my-bookings">
+
+        <div class="stats">
+
+            <div class="stat-box">
+                <h3 id="totalBookings">0</h3>
+                <p>Total Bookings</p>
+            </div>
+
+            <div class="stat-box">
+                <h3 id="topPackage">-</h3>
+                <p>Top Package</p>
+            </div>
+
+            <div class="stat-box">
+                <h3 id="topCity">-</h3>
+                <p>Top City</p>
             </div>
 
         </div>
 
-        <!-- PACKAGE 2 -->
-        <div class="package-card">
+        <h2>My Bookings</h2>
 
-            <img src="images/adventure.jpg" alt="Adventure Package">
+        <div id="bookingsContainer"></div>
 
-            <div class="package-content">
+    </section>
 
-                <h3>Adventure Package</h3>
-
-                <p>5 Days / 4 Nights</p>
-
-                <ul>
-                    <li>✔ Hotel Included</li>
-                    <li>✔ Adventure Activities</li>
-                    <li>✔ Guided Tour</li>
-                </ul>
-
-                <h4>₹29,999</h4>
-
-                <button onclick="selectPackage('Adventure')">Buy Now</button>
-
-            </div>
-
-        </div>
-
-        <!-- PACKAGE 3 -->
-        <div class="package-card">
-
-            <img src="images/luxury.jpg" alt="Luxury Package">
-
-            <div class="package-content">
-
-                <h3>Luxury Package</h3>
-
-                <p>7 Days / 6 Nights</p>
-
-                <ul>
-                    <li>✔ Premium Resort</li>
-                    <li>✔ Airport Pickup</li>
-                    <li>✔ VIP Experience</li>
-                </ul>
-
-                <h4>₹49,999</h4>
-
-                <button onclick="selectPackage('Luxury')">Buy Now</button>
-
-            </div>
-        </section>
-<!-- BOOKING SECTION -->
-
-<section class="booking">
-
-    <h2 class="section-title">Book Your Trip</h2>
-
-    <form id="bookingForm" class="booking-form">
-        <input type="text" id="name" placeholder="Full Name" required>
-
-        <input type="email" id="email" placeholder="Email Address" required>
-
-        <select id="country" required>
-            <option value="">Select Country</option>
-            <option value="India">India</option>
-            <option value="Japan">Japan</option>
-            <option value="France">France</option>
-            <option value="UAE">UAE</option>
-            <option value="Switzerland">Switzerland</option>
-            <option value="Maldives">Maldives</option>
-        </select>
-
-        <!-- FIXED: single city dropdown -->
-        <select id="city" required>
-            <option value="">Select City</option>
-        </select>
-
-        <input type="date" id="travelDate" required>
-
-        <input type="number" id="travelers" placeholder="Number of Travelers" min="1" required>
-
-        <select id="package" required>
-            <option value="">Select Package</option>
-            <option value="Explorer">Explorer Package</option>
-            <option value="Adventure">Adventure Package</option>
-            <option value="Luxury">Luxury Package</option>
-        </select>
-
-        <button type="submit">Submit Booking</button>
-
-    </form>
-
-    <div id="bookingMessage"></div>
-
-</section>
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
