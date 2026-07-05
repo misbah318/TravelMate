@@ -53,6 +53,9 @@ Deployment:
 │   ├── style.css
 │   ├── script.js
 │   └── images/
+├── package-detail.html
+├── package-detail.css
+└── package-detail.js
 │
 ├── server.js
 ├── package.json
@@ -100,6 +103,16 @@ POST /api/bookings
 
 # contact page <img width="1918" height="568" alt="image" src="https://github.com/user-attachments/assets/9c9a0735-7f2c-4b4a-91f7-494072d1272e" />
 # login page <img width="1918" height="896" alt="image" src="https://github.com/user-attachments/assets/e0d43eb9-f515-4016-b9d1-998ea62ced29" />
+# Explorer package <img width="1918" height="1017" alt="image" src="https://github.com/user-attachments/assets/bcf86870-29c7-4dd2-a280-9e9695715b17" />
+<img width="1908" height="1012" alt="image" src="https://github.com/user-attachments/assets/c0cfcdf3-d1b2-456c-9bba-bacd50513eb5" />
+
+
+# Adventure Package <img width="1918" height="1062" alt="image" src="https://github.com/user-attachments/assets/3f142e0f-cbce-41f4-97ad-457273734614" />
+<img width="1918" height="1050" alt="image" src="https://github.com/user-attachments/assets/08ac7c25-1c06-4104-868a-594b347b65c5" />
+
+# luxury Package <img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/a9a8bc3f-cf95-49d0-92c6-27e8f5ea0ab4" />
+<img width="1918" height="1025" alt="image" src="https://github.com/user-attachments/assets/bbdd0368-29a1-4c05-9aab-9284ce1b6ce1" />
+
 
 
 
